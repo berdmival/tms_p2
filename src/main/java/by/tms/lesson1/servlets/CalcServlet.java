@@ -57,8 +57,11 @@ public class CalcServlet extends HttpServlet {
         if ((num1 != null) & (num2 != null) & (action != null)) {
             Integer result = getResult(num1, num2, action);
             if (result != null) {
-                String currentResult = "num1 = " + num1 + ", num2 = " + num2 + ", action: " + action + ", result = " + result;
-                history.add(currentResult);
+                StringBuilder currentResult = new StringBuilder().append("num1 = ").append(num1)
+                        .append(", num2 = ").append(num2)
+                        .append(", action: ").append(action)
+                        .append(", result = ").append(result);
+                history.add(currentResult.toString());
                 resp.getWriter().println("<H3>Current result:</H3>");
                 resp.getWriter().println((currentResult));
             } else {

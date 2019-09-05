@@ -12,12 +12,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import static by.tms.lesson1.html_fragmets.Templates.*;
+
 @WebServlet(urlPatterns = "/index")
 public class MainServlet extends HttpServlet {
-
-    public static final String REGISTER_REQUEST = "<H1>Please, enter your name and age in the request /index/auth?name=[yourName]&age=[yourAge]</H1>";
-    public static final String HTML_HEADER = "<!DOCTYPE html><html><head><title>Calculator with history</title></head><body>";
-    public static final String HTML_FOOTER = "</body></html>";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,21 +49,21 @@ public class MainServlet extends HttpServlet {
 
                     printHistory(resp, session);
 
-                    resp.getWriter().println("__________________________________________________________________________<br><br>");
+                    resp.getWriter().println(LINE);
 
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             });
         } else {
-            resp.getWriter().println("Sessions map is empty<br>");
+            resp.getWriter().println(SESSIONS_MAP_IS_EMPTY);
         }
     }
 
     public static void printHistory(HttpServletResponse resp, HttpSession session) throws IOException {
         List<String> historyList = (List<String>) session.getAttribute("history");
 
-        resp.getWriter().println("<H4>History:</H4>");
+        resp.getWriter().println(HISTORY);
 
         if ((historyList != null) & (historyList.size() > 0)) {
             historyList.forEach(history -> {
@@ -76,7 +74,7 @@ public class MainServlet extends HttpServlet {
                 }
             });
         } else {
-            resp.getWriter().println("History is empty<br>");
+            resp.getWriter().println(HISTORY_IS_EMPTY);
         }
     }
 }

@@ -11,10 +11,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+import static by.tms.lesson1.html_fragmets.Templates.*;
+
 @WebServlet(urlPatterns = "/index/calc")
 public class CalcServlet extends HttpServlet {
-
-    public static final String CALC_REQUEST = "<H2>Enter request: http://yourserver:port/calc?num1=[value 1]&num2=[value 2]&action=[sum or diff or mult or div]</H2>";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,11 +26,11 @@ public class CalcServlet extends HttpServlet {
     }
 
     private void printResultPage(HttpServletRequest req, HttpServletResponse resp, String num1, String num2, String action) throws IOException {
-        resp.getWriter().println(MainServlet.HTML_HEADER);
+        resp.getWriter().println(HTML_HEADER);
 
         HttpSession currentSession = req.getSession();
         if (currentSession.isNew() || currentSession.getAttribute("user") == null) {
-            resp.getWriter().println(MainServlet.REGISTER_REQUEST);
+            resp.getWriter().println(REGISTER_REQUEST);
         } else {
             topBlockOfPage(req, resp);
 
@@ -40,7 +40,7 @@ public class CalcServlet extends HttpServlet {
             currentResultHandler(resp, num1, num2, action, history);
         }
 
-        resp.getWriter().println(MainServlet.HTML_FOOTER);
+        resp.getWriter().println(HTML_FOOTER);
     }
 
     private void topBlockOfPage(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -48,7 +48,7 @@ public class CalcServlet extends HttpServlet {
         if (currentUser != null) {
             resp.getWriter().println("<H1>Hello, " + currentUser.getName() + "</H1>");
         } else {
-            resp.getWriter().println(MainServlet.REGISTER_REQUEST);
+            resp.getWriter().println(REGISTER_REQUEST);
         }
         resp.getWriter().println(CALC_REQUEST);
     }
@@ -62,10 +62,10 @@ public class CalcServlet extends HttpServlet {
                 resp.getWriter().println("<H3>Current result:</H3>");
                 resp.getWriter().println((currentResult));
             } else {
-                resp.getWriter().println("<H3>Current request is incorrect!</H3>");
+                resp.getWriter().println(CURRENT_REQUEST_IS_INCORRECT);
             }
         } else {
-            resp.getWriter().println("<H3>Current request is incorrect!</H3>");
+            resp.getWriter().println(CURRENT_REQUEST_IS_INCORRECT);
         }
     }
 

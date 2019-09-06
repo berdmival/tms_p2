@@ -1,16 +1,44 @@
 package by.tms.lesson1.users;
 
+import java.util.Objects;
+
 public class User {
     private int id;
     private String name;
     private int age;
     private static int usersCount;
+    private String password;
 
-    public User(String name, int age) {
-        User.setUsersCount(User.getUsersCount() + 1);
-        this.id = User.getUsersCount();
+    public User() {
+    }
+
+    public User(String name, int age, String password) {
+        this.id = usersCount++;
         this.name = name;
         this.age = age;
+        this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(name, user.name) &&
+                Objects.equals(password, user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, password);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId() {
@@ -35,10 +63,6 @@ public class User {
 
     public static int getUsersCount() {
         return usersCount;
-    }
-
-    public static void setUsersCount(int usersCount) {
-        User.usersCount = usersCount;
     }
 
     @Override

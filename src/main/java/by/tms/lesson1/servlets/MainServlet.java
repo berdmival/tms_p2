@@ -29,7 +29,7 @@ public class MainServlet extends HttpServlet {
             User currentUser = (User) currentSession.getAttribute("user");
             if (currentUser != null) {
                 resp.getWriter().println("<H1>Hello, " + currentUser.getName() + "</H1>");
-                printCurrentSessionFromMapOfSessions(resp);
+                printCurrentSessionFromMapOfSessions(resp, currentSession);
             } else {
                 resp.getWriter().println(REGISTER_REQUEST);
             }
@@ -39,9 +39,10 @@ public class MainServlet extends HttpServlet {
 
     }
 
-    private void printCurrentSessionFromMapOfSessions(HttpServletResponse resp) throws IOException {
+    private void printCurrentSessionFromMapOfSessions(HttpServletResponse resp, HttpSession currentSession) throws IOException {
         Map<String, HttpSession> listOfSessions = (Map<String, HttpSession>) getServletContext().getAttribute("sessions");
-        if (listOfSessions != null) {
+
+        if (currentSession.getAttribute("user") == null) {
             listOfSessions.forEach((id, session) -> {
                 try {
                     resp.getWriter().println("<H3>Session with id " + id + ": "

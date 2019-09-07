@@ -13,7 +13,7 @@ import java.util.List;
 
 import static by.tms.lesson1.html_fragmets.Templates.*;
 
-@WebServlet(urlPatterns = "/index/calc")
+@WebServlet(name = "calcServlet", urlPatterns = "/index/calc")
 public class CalcServlet extends HttpServlet {
 
     @Override

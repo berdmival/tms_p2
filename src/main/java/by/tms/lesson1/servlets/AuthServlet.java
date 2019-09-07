@@ -30,16 +30,16 @@ public class AuthServlet extends HttpServlet {
                 currentUser.setName(currentUserName);
                 currentUser.setPassword(currentUserPassword);
                 ArrayList<User> users = (ArrayList<User>) getServletContext().getAttribute("users");
-                boolean authenticationSuccessful= false;
+                boolean authenticationSuccessful = false;
                 for (User user : users) {
                     if (user.equals(currentUser)) {
                         authenticationSuccessful = true;
                         currentSession.setAttribute("user", user);
-                        addCurrentSessionToMapOfSessions(currentSession);
+                        ((Map<String, HttpSession>) getServletContext().getAttribute("sessions")).put(currentSession.getId(), currentSession);
                         resp.getWriter().println("<H1>Welcome, " + ((User) currentSession.getAttribute("user")).getName() + "</H1>");
                     }
                 }
-                if (authenticationSuccessful) {
+                if (!authenticationSuccessful) {
                     resp.getWriter().println(AUTH_FAIL);
                 }
             } else {
@@ -50,9 +50,5 @@ public class AuthServlet extends HttpServlet {
         }
 
         resp.getWriter().println(HTML_FOOTER);
-    }
-
-    private void addCurrentSessionToMapOfSessions(HttpSession currentSession) {
-        ((Map<String, HttpSession>) getServletContext().getAttribute("sessions")).put(currentSession.getId(), currentSession);
     }
 }

@@ -1,6 +1,6 @@
 package by.tms.lesson1.servlets;
 
-import by.tms.lesson1.users.User;
+import by.tms.lesson1.entities.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static by.tms.lesson1.html_fragmets.Templates.*;
 
-@WebServlet(urlPatterns = "/index")
+@WebServlet(name = "mainServlet", urlPatterns = "/index")
 public class MainServlet extends HttpServlet {
 
     @Override
@@ -42,11 +42,11 @@ public class MainServlet extends HttpServlet {
     private void printCurrentSessionFromMapOfSessions(HttpServletResponse resp, HttpSession currentSession) throws IOException {
         Map<String, HttpSession> listOfSessions = (Map<String, HttpSession>) getServletContext().getAttribute("sessions");
 
-        if (currentSession.getAttribute("user") == null) {
+        if ((listOfSessions != null) & (listOfSessions.size() > 0)) {
             listOfSessions.forEach((id, session) -> {
                 try {
                     resp.getWriter().println("<H3>Session with id " + id + ": "
-                            + ((User)(session.getAttribute("user"))).toString() + "</H3>");
+                            + ((User) (session.getAttribute("user"))).toString() + "</H3>");
 
                     printHistory(resp, session);
 

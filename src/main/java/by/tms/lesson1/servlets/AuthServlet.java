@@ -1,6 +1,6 @@
 package by.tms.lesson1.servlets;
 
-import by.tms.lesson1.users.User;
+import by.tms.lesson1.entities.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,12 +11,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 import static by.tms.lesson1.html_fragmets.Templates.*;
 
-@WebServlet(urlPatterns = "/index/auth")
+@WebServlet(name = "authServlet", urlPatterns = "/index/auth")
 public class AuthServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,7 +36,6 @@ public class AuthServlet extends HttpServlet {
                     if (user.equals(currentUser)) {
                         authorized = true;
                         currentSession.setAttribute("user", user);
-                        currentSession.setAttribute("history", new LinkedList<String>());
                         addCurrentSessionToMapOfSessions(currentSession);
                         resp.getWriter().println("<H1>Welcome, " + ((User) currentSession.getAttribute("user")).getName() + "</H1>");
                     }

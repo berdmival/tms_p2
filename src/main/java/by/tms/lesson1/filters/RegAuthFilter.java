@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(filterName = "doubleRegistrationOrAuthorisationFilter", servletNames = {"regServlet", "authServlet"})
-public class RegFilter extends HttpFilter {
+public class RegAuthFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         if (req.getSession().getAttribute("user") != null) {

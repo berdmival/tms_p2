@@ -31,16 +31,16 @@ public class AuthServlet extends HttpServlet {
                 currentUser.setName(currentUserName);
                 currentUser.setPassword(currentUserPassword);
                 ArrayList<User> users = (ArrayList<User>) getServletContext().getAttribute("users");
-                boolean authorized = false;
+                boolean authenticationSuccessful= false;
                 for (User user : users) {
                     if (user.equals(currentUser)) {
-                        authorized = true;
+                        authenticationSuccessful = true;
                         currentSession.setAttribute("user", user);
                         addCurrentSessionToMapOfSessions(currentSession);
                         resp.getWriter().println("<H1>Welcome, " + ((User) currentSession.getAttribute("user")).getName() + "</H1>");
                     }
                 }
-                if (!authorized) {
+                if (authenticationSuccessful) {
                     resp.getWriter().println(AUTH_FAIL);
                 }
             } else {

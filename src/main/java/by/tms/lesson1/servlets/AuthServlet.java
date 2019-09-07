@@ -54,13 +54,6 @@ public class AuthServlet extends HttpServlet {
     }
 
     private void addCurrentSessionToMapOfSessions(HttpSession currentSession) {
-        Map<String, HttpSession> listOfSessions = (Map<String, HttpSession>) getServletContext().getAttribute("sessions");
-        if (listOfSessions != null) {
-            listOfSessions.put(currentSession.getId(), currentSession);
-        } else {
-            listOfSessions = new HashMap<>();
-            listOfSessions.put(currentSession.getId(), currentSession);
-            getServletContext().setAttribute("sessions", listOfSessions);
-        }
+        ((Map<String, HttpSession>) getServletContext().getAttribute("sessions")).put(currentSession.getId(), currentSession);
     }
 }

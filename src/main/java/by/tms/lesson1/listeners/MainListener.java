@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 @WebListener()
@@ -19,6 +20,7 @@ public class MainListener implements ServletContextListener,
 
     public void contextInitialized(ServletContextEvent sce) {
       sce.getServletContext().setAttribute("users", new ArrayList<>());
+      sce.getServletContext().setAttribute("sessions", new HashMap<>());
     }
 
     public void contextDestroyed(ServletContextEvent sce) {

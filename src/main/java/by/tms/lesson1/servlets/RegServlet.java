@@ -29,8 +29,17 @@ public class RegServlet extends HttpServlet {
             if ((currentUserName != null) & (currentUserAge != null) & (currentUserPassword != null)) {
                 User currentUser = new User(currentUserName, Integer.parseInt(currentUserAge), currentUserPassword);
                 ArrayList<User> users = (ArrayList<User>) servletContext.getAttribute("users");
-                users.add(currentUser);
-                resp.getWriter().println("<H1>Welcome, " + currentUser.getName() + "</H1>");
+                boolean userExists = false;
+                for (User user : users) {
+                    if (user.getName().equals(currentUser.getName())) {
+                        userExists = true;
+                        resp.getWriter().println("<H1>User " + user.getName() + " is already exists</H1>");
+                    }
+                }
+                if (!userExists) {
+                    users.add(currentUser);
+                    resp.getWriter().println("<H1>Welcome, " + currentUser.getName() + "</H1>");
+                }
             } else {
                 resp.getWriter().println(REGISTER_REQUEST);
             }

@@ -56,19 +56,15 @@ public class CalcServlet extends HttpServlet {
     }
 
     private void currentResultHandler(HttpServletResponse resp, String num1, String num2, String action, List<String> history) throws IOException {
-        if ((num1 != null) & (num2 != null) & (action != null)) {
+        if (validateParametors(num1, num2, action)) {
             Integer result = getResult(num1, num2, action);
-            if (result != null) {
-                StringBuilder currentResult = new StringBuilder().append("num1 = ").append(num1)
-                        .append(", num2 = ").append(num2)
-                        .append(", action: ").append(action)
-                        .append(", result = ").append(result);
-                history.add(currentResult.toString());
-                resp.getWriter().println("<H3>Current result:</H3>");
-                resp.getWriter().println((currentResult));
-            } else {
-                resp.getWriter().println(CURRENT_REQUEST_IS_INCORRECT);
-            }
+            StringBuilder currentResult = new StringBuilder().append("num1 = ").append(num1)
+                    .append(", num2 = ").append(num2)
+                    .append(", action: ").append(action)
+                    .append(", result = ").append(result);
+            history.add(currentResult.toString());
+            resp.getWriter().println("<H3>Current result:</H3>");
+            resp.getWriter().println((currentResult));
         } else {
             resp.getWriter().println(CURRENT_REQUEST_IS_INCORRECT);
         }
@@ -94,5 +90,44 @@ public class CalcServlet extends HttpServlet {
         }
 
         return result;
+    }
+
+    private boolean validateParametors(String num1, String num2, String action) {
+        boolean validNumbers = (isIntByJonas(num1) & isIntByJonas(num2));
+        boolean validAction = false;
+        if (action != null) {
+            switch (action) {
+                case "sum":
+                case "diff":
+                case "mult":
+                case "div":
+                    validAction = true;
+            }
+        }
+        return (validNumbers & validAction);
+    }
+
+    private boolean isIntByJonas(String str) {
+        if (str == null) {
+            return false;
+        }
+        int length = str.length();
+        if (length == 0) {
+            return false;
+        }
+        int i = 0;
+        if (str.charAt(0) == '-') {
+            if (length == 1) {
+                return false;
+            }
+            i = 1;
+        }
+        for (; i < length; i++) {
+            char c = str.charAt(i);
+            if (c <= '/' || c >= ':') {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -28,6 +28,7 @@ public class MainServlet extends HttpServlet {
         } else {
             User currentUser = (User) currentSession.getAttribute("user");
             if (currentUser != null) {
+                resp.getWriter().println(LOGOUT_BUTTON);
                 resp.getWriter().println("<H1>Hello, " + currentUser.getName() + "</H1>");
                 printCurrentSessionFromMapOfSessions(resp, currentSession);
             } else {

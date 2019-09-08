@@ -36,6 +36,7 @@ public class AuthServlet extends HttpServlet {
                         authenticationSuccessful = true;
                         currentSession.setAttribute("user", user);
                         ((Map<String, HttpSession>) getServletContext().getAttribute("sessions")).put(currentSession.getId(), currentSession);
+                        resp.getWriter().println(LOGOUT_BUTTON);
                         resp.getWriter().println("<H1>Welcome, " + ((User) currentSession.getAttribute("user")).getName() + "</H1>");
                     }
                 }
@@ -46,6 +47,7 @@ public class AuthServlet extends HttpServlet {
                 resp.getWriter().println(REGISTER_REQUEST);
             }
         } else {
+            resp.getWriter().println(LOGOUT_BUTTON);
             resp.getWriter().println("<H1>Hello, " + ((User) currentSession.getAttribute("user")).getName() + "</H1>");
         }
 

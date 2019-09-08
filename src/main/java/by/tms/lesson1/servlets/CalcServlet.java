@@ -46,6 +46,8 @@ public class CalcServlet extends HttpServlet {
     private void topBlockOfPage(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         User currentUser = (User) req.getSession().getAttribute("user");
         if (currentUser != null) {
+            resp.getWriter().println(LOGOUT_BUTTON);
+
             resp.getWriter().println("<H1>Hello, " + currentUser.getName() + "</H1>");
         } else {
             resp.getWriter().println(REGISTER_REQUEST);

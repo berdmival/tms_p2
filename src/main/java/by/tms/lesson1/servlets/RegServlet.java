@@ -44,6 +44,7 @@ public class RegServlet extends HttpServlet {
                 resp.getWriter().println(REGISTER_REQUEST);
             }
         } else {
+            resp.getWriter().println(LOGOUT_BUTTON);
             resp.getWriter().println("<H1>Hello, " + ((User) (currentSession.getAttribute("user"))).getName() + "</H1>");
         }
 

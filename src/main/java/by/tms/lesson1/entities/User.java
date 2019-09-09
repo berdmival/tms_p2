@@ -20,6 +20,15 @@ public class User {
     }
 
     @Override
+    public String toString() {
+        return "User with" +
+                " id = " + id +
+                " (name is '" + name + "\'" +
+                ", age is " + age +
+                " years old).";
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -63,14 +72,5 @@ public class User {
 
     public static int getUsersCount() {
         return usersCount;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
     }
 }

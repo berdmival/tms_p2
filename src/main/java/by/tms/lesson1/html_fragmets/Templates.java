@@ -29,4 +29,5 @@ public interface Templates {
     String HISTORY = "<H4>History:</H4>";
     String AUTH_FAIL = "<H1>Name or password is incorrect!</H1>";
     String LOGOUT_BUTTON = "<a href=\"/index/logout\" class=\"logout_button\"><b>Logout</b></a>";
+    String NOW_YOU_CAN = "<H2>Now you can use the calculator and view the history of other users.</H2>";
 }

@@ -16,6 +16,7 @@ import static by.tms.lesson1.html_fragmets.Templates.*;
 
 @WebServlet(name = "authServlet", urlPatterns = "/index/auth")
 public class AuthServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().println(HTML_HEADER);
@@ -37,7 +38,8 @@ public class AuthServlet extends HttpServlet {
                         currentSession.setAttribute("user", user);
                         ((Map<String, HttpSession>) getServletContext().getAttribute("sessions")).put(currentSession.getId(), currentSession);
                         resp.getWriter().println(LOGOUT_BUTTON);
-                        resp.getWriter().println("<H1>Welcome, " + ((User) currentSession.getAttribute("user")).getName() + "</H1>");
+                        resp.getWriter().println("<H1>Welcome, " + ((User) currentSession.getAttribute("user")).getName() + "!</H1>");
+                        resp.getWriter().println(NOW_YOU_CAN);
                     }
                 }
                 if (!authenticationSuccessful) {

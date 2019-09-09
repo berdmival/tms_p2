@@ -38,7 +38,9 @@ public class RegServlet extends HttpServlet {
                 }
                 if (!userExists) {
                     users.add(currentUser);
-                    resp.getWriter().println("<H1>Welcome, " + currentUser.getName() + "</H1>");
+                    resp.getWriter().println("<H1>Welcome, " + currentUser.getName()
+                            + "! Please, authenticate manually, if your browser don't redirect automatically</H1>");
+                    resp.sendRedirect("/index/auth?name="+currentUserName+"&password="+currentUserPassword);
                 }
             } else {
                 resp.getWriter().println(REGISTER_REQUEST);

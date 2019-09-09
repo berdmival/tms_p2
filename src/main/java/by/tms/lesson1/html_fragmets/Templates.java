@@ -28,5 +28,5 @@ public interface Templates {
     String HISTORY_IS_EMPTY = "History is empty<br>";
     String HISTORY = "<H4>History:</H4>";
     String AUTH_FAIL = "<H1>Name or password is incorrect!</H1>";
-    String LOGOUT_BUTTON = "<a href=\"http://localhost:8080/index/logout\" class=\"logout_button\"><b>Logout</b></a>";
+    String LOGOUT_BUTTON = "<a href=\"/index/logout\" class=\"logout_button\"><b>Logout</b></a>";
 }

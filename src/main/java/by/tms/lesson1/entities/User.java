@@ -25,7 +25,7 @@ public class User {
                 " id = " + id +
                 " (name is '" + name + "\'" +
                 ", age is " + age +
-                " years old).";
+                " years old)";
     }
 
     @Override

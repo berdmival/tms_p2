@@ -19,25 +19,7 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println(HTML_HEADER);
-
-        HttpSession currentSession = req.getSession();
-
-        if (currentSession.isNew()) {
-            resp.getWriter().println(REGISTER_REQUEST);
-        } else {
-            User currentUser = (User) currentSession.getAttribute("user");
-            if (currentUser != null) {
-                resp.getWriter().println(LOGOUT_BUTTON);
-                resp.getWriter().println("<H1>Hello, " + currentUser.getName() + "</H1>");
-                printCurrentSessionFromMapOfSessions(resp, currentSession);
-            } else {
-                resp.getWriter().println(REGISTER_REQUEST);
-            }
-        }
-
-        resp.getWriter().println(HTML_FOOTER);
-
+        getServletContext().getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req, resp);
     }
 
     private void printCurrentSessionFromMapOfSessions(HttpServletResponse resp, HttpSession currentSession) throws IOException {

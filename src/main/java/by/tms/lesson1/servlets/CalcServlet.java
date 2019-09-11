@@ -18,6 +18,11 @@ public class CalcServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/WEB-INF/pages/calc.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String num1 = req.getParameter("num1");
         String num2 = req.getParameter("num2");
         String action = req.getParameter("action");

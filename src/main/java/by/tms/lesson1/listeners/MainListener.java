@@ -23,24 +23,10 @@ public class MainListener implements ServletContextListener,
       sce.getServletContext().setAttribute("sessions", new HashMap<>());
     }
 
-    public void contextDestroyed(ServletContextEvent sce) {
-    }
-
-    public void sessionCreated(HttpSessionEvent se) {
-    }
-
-    public void sessionDestroyed(HttpSessionEvent se) {
-    }
-
     public void attributeAdded(HttpSessionBindingEvent sbe) {
       if(sbe.getName().equals("user")) {
           sbe.getSession().setAttribute("history", new LinkedList<String>());
       }
     }
 
-    public void attributeRemoved(HttpSessionBindingEvent sbe) {
-    }
-
-    public void attributeReplaced(HttpSessionBindingEvent sbe) {
-    }
 }

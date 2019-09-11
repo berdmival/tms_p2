@@ -41,6 +41,9 @@ public class RegServlet extends HttpServlet {
                 users.add(currentUser);
                 resp.sendRedirect("/index/auth");
             }
+        } else {
+            req.setAttribute("message", "Check your input, please");
+            getServletContext().getRequestDispatcher("/pages/reg.jsp").forward(req, resp);
         }
     }
 }

@@ -17,7 +17,7 @@ public class AuthServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/pages/auth.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/pages/auth.jsp").forward(req, resp);
     }
 
     @Override
@@ -43,11 +43,11 @@ public class AuthServlet extends HttpServlet {
             }
             if (!authenticationSuccessful) {
                 req.setAttribute("message", "Name or password is incorrect!");
-                getServletContext().getRequestDispatcher("/WEB-INF/pages/auth.jsp").forward(req, resp);
+                getServletContext().getRequestDispatcher("/pages/auth.jsp").forward(req, resp);
             }
         } else {
             req.setAttribute("message", "Name or password is incorrect!");
-            getServletContext().getRequestDispatcher("/WEB-INF/pages/auth.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher("/pages/auth.jsp").forward(req, resp);
         }
     }
 }

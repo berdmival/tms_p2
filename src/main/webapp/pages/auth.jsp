@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Calculator with history and authentication</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/mainCSS.css">
 </head>
 <body>
 <h1>${requestScope.message}</h1>

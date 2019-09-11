@@ -3,10 +3,11 @@
 <html>
 <head>
     <title>Calculator with history and authentication</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/mainCSS.css">
 </head>
 <body>
 <%
-    out.println("<br>History:<br><br>");
+    out.println("<h2>History:</h2>");
     for (String historyItem : (List<String>) session.getAttribute("history")) {
         out.println(historyItem + "<br>");
     }

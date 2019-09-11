@@ -15,7 +15,7 @@ public class CalcServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/pages/calc.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class CalcServlet extends HttpServlet {
         currentResult.insert(0, "Current result: ");
         req.setAttribute("message", currentResult.toString());
 
-        getServletContext().getRequestDispatcher("/WEB-INF/pages/calc.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
     }
 
     private Integer getResult(String num1, String num2, String action) {

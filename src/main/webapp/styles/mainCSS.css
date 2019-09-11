@@ -1,0 +1,32 @@
+body {
+    background: burlywood;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 2px dotted black;
+    padding: 10px 10px 10px 10px;
+    font-family: "Comic Sans MS", fantasy;
+}
+
+input {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: saddlebrown;
+    background-color: bisque;
+}
+
+select {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: saddlebrown;
+    background-color: bisque;
+}
+
+button {
+    background: chocolate;
+    padding: 5px;
+    font-family: "Comic Sans MS", fantasy;
+    border-radius: 5px;
+    border-color: saddlebrown;
+}

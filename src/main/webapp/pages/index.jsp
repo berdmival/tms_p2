@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Calculator with history and authentication</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/mainCSS.css">
 </head>
 <body>
 <%
@@ -13,8 +14,8 @@
     if (currentUser != null) {
         out.println("<H1>Hello, " + currentUser.getName() + "!</H1>");
         for (Map.Entry<String, HttpSession> sessionItem : ((Map<String, HttpSession>) application.getAttribute("sessions")).entrySet()) {
-            out.println("Session with id " + sessionItem.getKey() + ": " + ((HttpSession) sessionItem.getValue()).getAttribute("user") + "<br>");
-            out.println("<br>History:<br><br>");
+            out.println("<h2>Session with id " + sessionItem.getKey() + ":</h2>" + ((HttpSession) sessionItem.getValue()).getAttribute("user") + "<br>");
+            out.println("<h2>History:</h2>");
             for (String historyItem : (List<String>) ((HttpSession) sessionItem.getValue()).getAttribute("history")) {
                 out.println(historyItem + "<br>");
             }

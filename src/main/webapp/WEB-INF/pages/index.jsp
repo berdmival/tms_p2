@@ -14,7 +14,7 @@
         out.println("<H1>Hello, " + currentUser.getName() + "!</H1>");
         for (Map.Entry<String, HttpSession> sessionItem : ((Map<String, HttpSession>) application.getAttribute("sessions")).entrySet()) {
             out.println("Session with id " + sessionItem.getKey() + ": " + ((HttpSession) sessionItem.getValue()).getAttribute("user") + "<br>");
-            out.println("<br>History :<br><br>");
+            out.println("<br>History:<br><br>");
             for (String historyItem : (List<String>) ((HttpSession) sessionItem.getValue()).getAttribute("history")) {
                 out.println(historyItem + "<br>");
             }

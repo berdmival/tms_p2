@@ -6,12 +6,13 @@
 </head>
 <body>
 <%
-    out.println("<br>History :<br><br>");
-    for (String historyItem : (List<String>)session.getAttribute("history")) {
+    out.println("<br>History:<br><br>");
+    for (String historyItem : (List<String>) session.getAttribute("history")) {
         out.println(historyItem + "<br>");
     }
     out.println("<hr size=\"2\" color=\"black\"><br><br>");
 %>
+<h1>${requestScope.message}</h1>
 <form action="${pageContext.request.contextPath}/index/calc" method="post">
     <input required placeholder="num1" type="number" name="num1">
     <select required name="action">

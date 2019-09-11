@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-import static by.tms.lesson1.html_fragmets.Templates.*;
-
 @WebServlet(name = "authServlet", urlPatterns = "/index/auth")
 public class AuthServlet extends HttpServlet {
 
@@ -44,11 +42,12 @@ public class AuthServlet extends HttpServlet {
                 }
             }
             if (!authenticationSuccessful) {
-                req.setAttribute("message", AUTH_FAIL);
+                req.setAttribute("message", "Name or password is incorrect!");
                 getServletContext().getRequestDispatcher("/WEB-INF/pages/auth.jsp").forward(req, resp);
             }
         } else {
-            resp.getWriter().println(REGISTER_REQUEST);
+            req.setAttribute("message", "Name or password is incorrect!");
+            getServletContext().getRequestDispatcher("/WEB-INF/pages/auth.jsp").forward(req, resp);
         }
     }
 }

@@ -14,7 +14,7 @@
     out.println("<hr size=\"2\" color=\"black\"><br><br>");
 %>
 <h1>${requestScope.message}</h1>
-<form action="${pageContext.request.contextPath}/index/calc" method="post">
+<form action="${pageContext.request.contextPath}/calc" method="post">
     <input required placeholder="num1" type="number" name="num1">
     <select required name="action">
         <option value="sum">+</option>
@@ -25,7 +25,7 @@
     <input required placeholder="num2" type="number" name="num2"><br>
     <button type="submit">Calculate</button>
 </form>
-<button onclick="document.location='/index'">Home</button>
-<button onclick="document.location='/index/logout'">Logout</button>
+<button onclick="document.location='/'">Home</button>
+<button onclick="document.location='/logout'">Logout</button>
 </body>
 </html>

@@ -13,7 +13,7 @@ public class AnonymousAccessFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         if (req.getSession().getAttribute("user") == null) {
-            res.sendRedirect("/index");
+            res.sendRedirect("/");
         } else {
             chain.doFilter(req, res);
         }

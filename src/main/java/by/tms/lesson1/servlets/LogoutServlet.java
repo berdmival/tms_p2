@@ -9,12 +9,12 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet(name = "logoutServlet", urlPatterns = "/index/logout")
+@WebServlet(name = "logoutServlet", urlPatterns = "/logout")
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ((Map<String, HttpSession>) getServletContext().getAttribute("sessions")).remove(request.getSession().getId());
         request.getSession().invalidate();
-        response.sendRedirect("/index");
+        response.sendRedirect("/");
     }
 }

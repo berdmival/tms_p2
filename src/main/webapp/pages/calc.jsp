@@ -13,6 +13,7 @@
     <c:forEach var="historyItem" items="${sessionScope.history}">
         <p>${historyItem}</p>
     </c:forEach>
+    <hr size="2" color="black">
 </c:if>
 
 <h2>${requestScope.message}</h2>

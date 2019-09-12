@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Register your account, please, or click "Sign in" to log in</h1>
-<h1>${requestScope.message}</h1>
+<h2>${requestScope.message}</h2>
 <form action="${pageContext.request.contextPath}/index/reg" method="post">
     <input required placeholder="Your name" name="name"><br>
     <input required placeholder="Your age" type="number" name="age"><br>

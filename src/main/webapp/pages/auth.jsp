@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Log in to your account, please, or click "Sign up" to register</h1>
-<h1>${requestScope.message}</h1>
+<h2>${requestScope.message}</h2>
 <form action="${pageContext.request.contextPath}/index/auth" method="post">
     <input required placeholder="Your name" name="name"><br>
     <input required placeholder="Your password" type="password" name="password"><br>

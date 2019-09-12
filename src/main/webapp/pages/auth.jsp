@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Calculator with history and authentication</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/mainCSS.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}${applicationScope.css_path}">
 </head>
 <body>
 <h1>Log in to your account, please, or click "Sign up" to register</h1>

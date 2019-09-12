@@ -25,7 +25,7 @@
     <input required placeholder="num2" type="number" name="num2"><br>
     <button type="submit">Calculate</button>
 </form>
-<button onclick="document.location='/index/'">Home</button>
+<button onclick="document.location='/index'">Home</button>
 <button onclick="document.location='/index/logout'">Logout</button>
 </body>
 </html>

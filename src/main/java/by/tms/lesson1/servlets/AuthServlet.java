@@ -12,12 +12,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-@WebServlet(name = "authServlet", urlPatterns = "/index/auth")
+@WebServlet(name = "authServlet", urlPatterns = "/auth")
 public class AuthServlet extends HttpServlet {
+
+    public static final String AUTH_JSP = "/pages/auth.jsp";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/pages/auth.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher(AUTH_JSP).forward(req, resp);
     }
 
     @Override
@@ -38,16 +40,16 @@ public class AuthServlet extends HttpServlet {
                     authenticationSuccessful = true;
                     currentSession.setAttribute("user", user);
                     ((Map<String, HttpSession>) getServletContext().getAttribute("sessions")).put(currentSession.getId(), currentSession);
-                    resp.sendRedirect("/index");
+                    resp.sendRedirect("/");
                 }
             }
             if (!authenticationSuccessful) {
                 req.setAttribute("message", "Name or password is incorrect!");
-                getServletContext().getRequestDispatcher("/pages/auth.jsp").forward(req, resp);
+                getServletContext().getRequestDispatcher(AUTH_JSP).forward(req, resp);
             }
         } else {
             req.setAttribute("message", "Name or password is incorrect!");
-            getServletContext().getRequestDispatcher("/pages/auth.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher(AUTH_JSP).forward(req, resp);
         }
     }
 }

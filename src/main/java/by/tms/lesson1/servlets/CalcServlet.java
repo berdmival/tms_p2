@@ -10,12 +10,15 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@WebServlet(name = "calcServlet", urlPatterns = "/index/calc")
+@WebServlet(name = "calcServlet", urlPatterns = "/calc")
 public class CalcServlet extends HttpServlet {
+
+    public static final String CALC_JSP = "/pages/calc.jsp";
+    public static final String HISTORY_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher(CALC_JSP).forward(req, resp);
     }
 
     @Override
@@ -28,7 +31,7 @@ public class CalcServlet extends HttpServlet {
             Integer result = getResult(num1, num2, action);
 
             StringBuilder currentResult = new StringBuilder()
-                    .append("<b>").append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("</b>: ")
+                    .append("<b>").append(LocalDateTime.now().format(DateTimeFormatter.ofPattern(HISTORY_DATE_PATTERN))).append("</b>: ")
                     .append("num1 = ").append(num1)
                     .append(", num2 = ").append(num2)
                     .append(", action: ").append(action)
@@ -39,10 +42,10 @@ public class CalcServlet extends HttpServlet {
             currentResult.insert(0, "Current result: ");
             req.setAttribute("message", currentResult.toString());
 
-            getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher(CALC_JSP).forward(req, resp);
         } else {
             req.setAttribute("message", "Check your input, please");
-            getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher(CALC_JSP).forward(req, resp);
         }
     }
 

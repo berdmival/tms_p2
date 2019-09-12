@@ -18,16 +18,43 @@ public class MainListener implements ServletContextListener,
     public MainListener() {
     }
 
+    @Override
     public void contextInitialized(ServletContextEvent sce) {
-      sce.getServletContext().setAttribute("users", new ArrayList<>());
-      sce.getServletContext().setAttribute("sessions", new HashMap<>());
-      sce.getServletContext().setAttribute("css_path", "/styles/mainCSS.css");
+        sce.getServletContext().setAttribute("users", new ArrayList<>());
+        sce.getServletContext().setAttribute("sessions", new HashMap<>());
+        sce.getServletContext().setAttribute("css_path", "/styles/mainCSS.css");
     }
 
+    @Override
     public void attributeAdded(HttpSessionBindingEvent sbe) {
-      if(sbe.getName().equals("user")) {
-          sbe.getSession().setAttribute("history", new LinkedList<String>());
-      }
+        if(sbe.getName().equals("user")) {
+            sbe.getSession().setAttribute("history", new LinkedList<String>());
+        }
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+
+    }
+
+    @Override
+    public void attributeRemoved(HttpSessionBindingEvent event) {
+
+    }
+
+    @Override
+    public void attributeReplaced(HttpSessionBindingEvent event) {
+
+    }
+
+    @Override
+    public void sessionCreated(HttpSessionEvent se) {
+
+    }
+
+    @Override
+    public void sessionDestroyed(HttpSessionEvent se) {
+
     }
 
 }

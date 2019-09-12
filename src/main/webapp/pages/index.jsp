@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="by.tms.lesson1.entities.User" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.List" %>

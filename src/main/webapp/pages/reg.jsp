@@ -7,12 +7,12 @@
 <body>
 <h1>Register your account, please, or click "Sign in" to log in</h1>
 <h1>${requestScope.message}</h1>
-<form action="${pageContext.request.contextPath}/reg" method="post">
+<form action="${pageContext.request.contextPath}/index/reg" method="post">
     <input required placeholder="Your name" name="name"><br>
     <input required placeholder="Your age" type="number" name="age"><br>
     <input required placeholder="Your password" type="password" name="password"><br>
     <button type="submit">Sign up</button>
 </form>
-<button onclick="document.location='/auth'">Sign in</button>
+<button onclick="document.location='/index/auth'">Sign in</button>
 </body>
 </html>

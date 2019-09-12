@@ -26,9 +26,9 @@
     }
 %>
 
-<button onclick="document.location='/reg'">Sign up</button>
-<button onclick="document.location='/auth'">Sign in</button>
-<button onclick="document.location='/logout'">Logout</button>
-<button onclick="document.location='/calc'">Calculator</button>
+<button onclick="document.location='/index/reg'">Sign up</button>
+<button onclick="document.location='/index/auth'">Sign in</button>
+<button onclick="document.location='/index/logout'">Logout</button>
+<button onclick="document.location='/index/calc'">Calculator</button>
 </body>
 </html>

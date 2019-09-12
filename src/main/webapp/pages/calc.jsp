@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}${applicationScope.css_path}">
 </head>
 <body>
-<%
-    out.println("<h2>History:</h2>");
-    for (String historyItem : (List<String>) session.getAttribute("history")) {
-        out.println(historyItem + "<br>");
-    }
-    out.println("<hr size=\"2\" color=\"black\"><br><br>");
-%>
-<h1>${requestScope.message}</h1>
+<h1>Enter numbers and select action. Then click "Calculate".</h1>
+
+<c:if test="${sessionScope.history.size() > 0}">
+    <h2>History:</h2>
+    <c:forEach var="historyItem" items="${sessionScope.history}">
+        <p>${historyItem}</p>
+    </c:forEach>
+</c:if>
+
+<h2>${requestScope.message}</h2>
 <form action="${pageContext.request.contextPath}/index/calc" method="post">
     <input required placeholder="num1" type="number" name="num1">
     <select required name="action">

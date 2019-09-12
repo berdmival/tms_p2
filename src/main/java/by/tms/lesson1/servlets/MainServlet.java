@@ -10,8 +10,10 @@ import java.io.IOException;
 @WebServlet(name = "mainServlet", urlPatterns = "/index")
 public class MainServlet extends HttpServlet {
 
+    public static final String INDEX_JSP = "/pages/index.jsp";
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher(INDEX_JSP).forward(req, resp);
     }
 }

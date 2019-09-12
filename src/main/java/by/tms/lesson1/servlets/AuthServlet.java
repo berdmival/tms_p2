@@ -15,9 +15,13 @@ import java.util.Map;
 @WebServlet(name = "authServlet", urlPatterns = "/index/auth")
 public class AuthServlet extends HttpServlet {
 
+    public static final String AUTH_JSP = "/pages/auth.jsp";
+    public static final String INDEX_PATH = "/index";
+    public static final String NAME_OR_PASSWORD_IS_INCORRECT_MESSAGE = "Name or password is incorrect!";
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/pages/auth.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher(AUTH_JSP).forward(req, resp);
     }
 
     @Override
@@ -38,16 +42,16 @@ public class AuthServlet extends HttpServlet {
                     authenticationSuccessful = true;
                     currentSession.setAttribute("user", user);
                     ((Map<String, HttpSession>) getServletContext().getAttribute("sessions")).put(currentSession.getId(), currentSession);
-                    resp.sendRedirect("/index");
+                    resp.sendRedirect(INDEX_PATH);
                 }
             }
             if (!authenticationSuccessful) {
-                req.setAttribute("message", "Name or password is incorrect!");
-                getServletContext().getRequestDispatcher("/pages/auth.jsp").forward(req, resp);
+                req.setAttribute("message", NAME_OR_PASSWORD_IS_INCORRECT_MESSAGE);
+                getServletContext().getRequestDispatcher(AUTH_JSP).forward(req, resp);
             }
         } else {
-            req.setAttribute("message", "Name or password is incorrect!");
-            getServletContext().getRequestDispatcher("/pages/auth.jsp").forward(req, resp);
+            req.setAttribute("message", NAME_OR_PASSWORD_IS_INCORRECT_MESSAGE);
+            getServletContext().getRequestDispatcher(AUTH_JSP).forward(req, resp);
         }
     }
 }

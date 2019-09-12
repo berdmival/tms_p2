@@ -13,9 +13,14 @@ import java.util.ArrayList;
 
 @WebServlet(name = "regServlet", urlPatterns = "/index/reg")
 public class RegServlet extends HttpServlet {
+
+    public static final String REG_JSP = "/pages/reg.jsp";
+    public static final String INDEX_AUTH_PATH = "/index/auth";
+    public static final String CHECK_YOUR_INPUT_PLEASE_MESSAGE = "Check your input, please";
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/pages/reg.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher(REG_JSP).forward(req, resp);
     }
 
     @Override
@@ -34,16 +39,16 @@ public class RegServlet extends HttpServlet {
                 if (user.getName().equals(currentUser.getName())) {
                     userExists = true;
                     req.setAttribute("message", "User " + user.getName() + " is already exists");
-                    getServletContext().getRequestDispatcher("/pages/reg.jsp").forward(req, resp);
+                    getServletContext().getRequestDispatcher(REG_JSP).forward(req, resp);
                 }
             }
             if (!userExists) {
                 users.add(currentUser);
-                resp.sendRedirect("/index/auth");
+                resp.sendRedirect(INDEX_AUTH_PATH);
             }
         } else {
-            req.setAttribute("message", "Check your input, please");
-            getServletContext().getRequestDispatcher("/pages/reg.jsp").forward(req, resp);
+            req.setAttribute("message", CHECK_YOUR_INPUT_PLEASE_MESSAGE);
+            getServletContext().getRequestDispatcher(REG_JSP).forward(req, resp);
         }
     }
 }

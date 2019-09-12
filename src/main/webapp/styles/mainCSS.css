@@ -1,32 +1,65 @@
+html {
+    background: saddlebrown;
+}
 body {
     background: burlywood;
     margin-left: 20%;
     margin-right: 20%;
-    border: 2px dotted black;
+    border-radius: 5px;
+    border: 0;
     padding: 10px 10px 10px 10px;
     font-family: "Comic Sans MS", fantasy;
+    box-shadow: 0 0 5px 2px;
 }
 
 input {
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
-    border-color: saddlebrown;
+    border: 0;
     background-color: bisque;
+    box-shadow: 0 0 5px;
 }
 
 select {
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
-    border-color: saddlebrown;
+    border: 0;
     background-color: bisque;
+    box-shadow: 0 0 5px;
 }
 
 button {
     background: chocolate;
+    background: -webkit-linear-gradient(top right, bisque, chocolate);
+    background: -moz-linear-gradient(top right, bisque, chocolate);
+    background: -ms-linear-gradient(top right, bisque, chocolate);
+    background: -o-linear-gradient(top right, bisque, chocolate);
+    background: linear-gradient(top right, bisque, chocolate);
     padding: 5px;
+    margin: 5px;
     font-family: "Comic Sans MS", fantasy;
     border-radius: 5px;
-    border-color: saddlebrown;
+    border: 0;
+    box-shadow: 0 0 5px;
+}
+
+button:hover {
+    background: bisque;
+    background: -webkit-linear-gradient(top right, chocolate, bisque);
+    background: -moz-linear-gradient(top right, chocolate, bisque);
+    background: -ms-linear-gradient(top right, chocolate, bisque);
+    background: -o-linear-gradient(top right, chocolate, bisque);
+    background: linear-gradient(top right, chocolate, bisque);
+    padding: 5px;
+    margin: 5px;
+    font-family: "Comic Sans MS", fantasy;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0 0 5px;
+}
+
+form {
+    margin-bottom: 5px;
 }

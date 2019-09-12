@@ -22,7 +22,7 @@
         <option value="diff">-</option>
         <option value="div">/</option>
     </select>
-    <input required placeholder="num2" type="number" name="num2"><br>
+    <input required placeholder="num2" type="number" name="num2">
     <button type="submit">Calculate</button>
 </form>
 <button onclick="document.location='/index'">Home</button>

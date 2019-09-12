@@ -11,6 +11,8 @@
 </head>
 <body>
 <%
+    //TODO: solve the problem, when session's life time expired, but it's not deleted automatically from map in the application context. When map is reading appears exception
+
     User currentUser = (User) session.getAttribute("user");
     if (currentUser != null) {
         out.println("<H1>Hello, " + currentUser.getName() + "!</H1>");

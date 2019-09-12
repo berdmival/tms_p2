@@ -18,7 +18,7 @@
 
 <h2>${requestScope.message}</h2>
 <form action="${pageContext.request.contextPath}/index/calc" method="post">
-    <input required placeholder="num1" type="number" name="num1">
+    <input required autofocus placeholder="num1" type="number" name="num1">
     <select required name="action">
         <option value="sum">+</option>
         <option value="mult">*</option>

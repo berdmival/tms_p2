@@ -9,7 +9,7 @@
 <h1>Register your account, please, or click "Sign in" to log in</h1>
 <h2>${requestScope.message}</h2>
 <form action="${pageContext.request.contextPath}/index/reg" method="post">
-    <input required placeholder="Your name" name="name"><br>
+    <input required autofocus placeholder="Your name" name="name"><br>
     <input required placeholder="Your age" type="number" name="age"><br>
     <input required placeholder="Your password" type="password" name="password"><br>
     <button type="submit">Sign up</button>

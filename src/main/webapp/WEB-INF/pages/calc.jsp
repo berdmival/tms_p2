@@ -1,10 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Calculator with history and authentication</title>
-    <link rel="stylesheet" href="<c:url value='${applicationScope.css_path}' />">
-</head>
+<%@include file="/WEB-INF/pages/head.jsp"%>
 <body>
 <h1>Enter numbers and select action. Then click "Calculate".</h1>
 

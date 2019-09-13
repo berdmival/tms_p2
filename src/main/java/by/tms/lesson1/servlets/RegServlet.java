@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @WebServlet(name = "regServlet", urlPatterns = "/index/reg")
 public class RegServlet extends HttpServlet {
 
-    public static final String REG_JSP = "/pages/reg.jsp";
+    public static final String REG_JSP = "/WEB-INF/pages/reg.jsp";
     public static final String INDEX_AUTH_PATH = "/index/auth";
     public static final String CHECK_YOUR_INPUT_PLEASE_MESSAGE = "Check your input, please";
 

@@ -13,7 +13,7 @@ import java.util.List;
 @WebServlet(name = "calcServlet", urlPatterns = "/index/calc")
 public class CalcServlet extends HttpServlet {
 
-    public static final String CALC_JSP = "/pages/calc.jsp";
+    public static final String CALC_JSP = "/WEB-INF/pages/calc.jsp";
     public static final String CHECK_YOUR_INPUT_PLEASE_MESSAGE = "Check your input, please";
     public static final String DATE_TIME_HISTORY_PATTERN = "yyyy-MM-dd HH:mm:ss";
 

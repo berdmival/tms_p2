@@ -10,7 +10,7 @@ import java.io.IOException;
 @WebServlet(name = "mainServlet", urlPatterns = "/index")
 public class MainServlet extends HttpServlet {
 
-    public static final String INDEX_JSP = "/pages/index.jsp";
+    public static final String INDEX_JSP = "/WEB-INF/pages/index.jsp";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

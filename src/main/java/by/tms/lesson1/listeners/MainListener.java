@@ -18,7 +18,6 @@ public class MainListener implements ServletContextListener,
     public void contextInitialized(ServletContextEvent sce) {
         sce.getServletContext().setAttribute("users", new ArrayList<>());
         sce.getServletContext().setAttribute("sessions", new ArrayList<>());
-        sce.getServletContext().setAttribute("css_path", "/styles/mainCSS.css");
     }
 
     @Override

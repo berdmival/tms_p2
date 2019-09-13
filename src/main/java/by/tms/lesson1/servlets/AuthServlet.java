@@ -15,7 +15,7 @@ import java.util.List;
 @WebServlet(name = "authServlet", urlPatterns = "/index/auth")
 public class AuthServlet extends HttpServlet {
 
-    public static final String AUTH_JSP = "/pages/auth.jsp";
+    public static final String AUTH_JSP = "/WEB-INF/pages/auth.jsp";
     public static final String INDEX_PATH = "/index";
     public static final String NAME_OR_PASSWORD_IS_INCORRECT_MESSAGE = "Name or password is incorrect!";
 

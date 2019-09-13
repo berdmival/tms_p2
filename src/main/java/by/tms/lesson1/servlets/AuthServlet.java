@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 @WebServlet(name = "authServlet", urlPatterns = "/index/auth")
 public class AuthServlet extends HttpServlet {
@@ -41,7 +41,7 @@ public class AuthServlet extends HttpServlet {
                 if (user.equals(currentUser)) {
                     authenticationSuccessful = true;
                     currentSession.setAttribute("user", user);
-                    ((Map<String, HttpSession>) getServletContext().getAttribute("sessions")).put(currentSession.getId(), currentSession);
+                    ((List<HttpSession>) getServletContext().getAttribute("sessions")).add(currentSession);
                     resp.sendRedirect(INDEX_PATH);
                 }
             }

@@ -5,9 +5,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.List;
 
 @WebListener()
 public class MainListener implements ServletContextListener,
@@ -19,20 +17,20 @@ public class MainListener implements ServletContextListener,
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         sce.getServletContext().setAttribute("users", new ArrayList<>());
-        sce.getServletContext().setAttribute("sessions", new HashMap<>());
+        sce.getServletContext().setAttribute("sessions", new ArrayList<>());
         sce.getServletContext().setAttribute("css_path", "/styles/mainCSS.css");
     }
 
     @Override
     public void attributeAdded(HttpSessionBindingEvent sbe) {
-        if(sbe.getName().equals("user")) {
-            sbe.getSession().setAttribute("history", new LinkedList<String>());
+        if (sbe.getName().equals("user")) {
+            sbe.getSession().setAttribute("history", new ArrayList<String>());
         }
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-        ((Map<String, HttpSession>) se.getSession().getServletContext().getAttribute("sessions")).remove(se.getSession().getId());
+        ((List<HttpSession>) se.getSession().getServletContext().getAttribute("sessions")).remove(se.getSession());
     }
 
     @Override

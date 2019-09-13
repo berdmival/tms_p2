@@ -32,7 +32,7 @@ public class CalcServlet extends HttpServlet {
             Integer result = getResult(num1, num2, action);
 
             StringBuilder currentResult = new StringBuilder()
-                    .append("<b>").append(LocalDateTime.now().format(DateTimeFormatter.ofPattern(DATE_TIME_HISTORY_PATTERN))).append("</b>: ")
+                    .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern(DATE_TIME_HISTORY_PATTERN))).append(": ")
                     .append("num1 = ").append(num1)
                     .append(", num2 = ").append(num2)
                     .append(", action: ").append(action)

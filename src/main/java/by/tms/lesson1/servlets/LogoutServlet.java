@@ -16,7 +16,6 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ((Map<String, HttpSession>) getServletContext().getAttribute("sessions")).remove(request.getSession().getId());
         request.getSession().invalidate();
         response.sendRedirect(INDEX_PATH);
     }

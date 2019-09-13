@@ -3,13 +3,11 @@ package by.tms.lesson1.listeners;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSessionAttributeListener;
-import javax.servlet.http.HttpSessionBindingEvent;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
+import javax.servlet.http.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 @WebListener()
 public class MainListener implements ServletContextListener,
@@ -54,7 +52,7 @@ public class MainListener implements ServletContextListener,
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-
+        ((Map<String, HttpSession>) se.getSession().getServletContext().getAttribute("sessions")).remove(se.getSession().getId());
     }
 
 }

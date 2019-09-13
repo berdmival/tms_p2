@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Calculator with history and authentication</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}${applicationScope.css_path}">
+    <link rel="stylesheet" href="<c:url value='${applicationScope.css_path}' />">
 </head>
 <body>
 <h1>Enter numbers and select action. Then click "Calculate".</h1>
@@ -16,7 +16,7 @@
     <hr size="2" color="black">
 </c:if>
 
-<h2>${requestScope.message}</h2>
+<h2><c:out value="${requestScope.message}" /></h2>
 <form action="${pageContext.request.contextPath}/index/calc" method="post">
     <input required autofocus placeholder="num1" type="number" name="num1">
     <select required name="action">

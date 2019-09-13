@@ -3,11 +3,11 @@
 <html>
 <head>
     <title>Calculator with history and authentication</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}${applicationScope.css_path}">
+    <link rel="stylesheet" href="<c:url value='${applicationScope.css_path}' />">
 </head>
 <body>
 <h1>Register your account, please, or click "Sign in" to log in</h1>
-<h2>${requestScope.message}</h2>
+<h2><c:out value="${requestScope.message}" /></h2>
 <form action="${pageContext.request.contextPath}/index/reg" method="post">
     <input required autofocus placeholder="Your name" name="name"><br>
     <input required placeholder="Your age" type="number" name="age"><br>

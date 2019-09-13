@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Calculator with history and authentication</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}${applicationScope.css_path}">
+    <link rel="stylesheet" href="<c:url value='${applicationScope.css_path}' />">
 </head>
 <body>
 <c:if test="${sessionScope.user != null}">

@@ -12,6 +12,9 @@
     </c:forEach>
     <hr size="2" color="black">
 </c:if>
+<c:if test="${sessionScope.history.size() == 0}">
+    <h2>History is empty</h2>
+</c:if>
 
 <h2><c:out value="${requestScope.message}" /></h2>
 <form action="${pageContext.request.contextPath}/index/calc" method="post">

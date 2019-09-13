@@ -1,10 +1,10 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<%@include file="/WEB-INF/pages/head.jsp"%>
+<%@include file="/WEB-INF/pages/head.jsp" %>
 <body>
 <h1>Register your account, please, or click "Sign in" to log in</h1>
-<h2><c:out value="${requestScope.message}" /></h2>
+<h2><c:out value="${requestScope.message}"/></h2>
 <form action="${pageContext.request.contextPath}/index/reg" method="post">
     <input required autofocus placeholder="Your name" name="name"><br>
     <input required placeholder="Your age" type="number" name="age"><br>

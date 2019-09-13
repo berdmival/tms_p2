@@ -63,3 +63,32 @@ button:hover {
 form {
     margin-bottom: 5px;
 }
+
+.btn {
+    display: inline-block;
+    padding: 5px;
+    text-decoration: none;
+    background: chocolate;
+    background: -webkit-linear-gradient(top right, bisque, chocolate);
+    background: -moz-linear-gradient(top right, bisque, chocolate);
+    background: -ms-linear-gradient(top right, bisque, chocolate);
+    background: -o-linear-gradient(top right, bisque, chocolate);
+    background: linear-gradient(top right, bisque, chocolate);
+    margin: 5px;
+    font-family: "Comic Sans MS", fantasy;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0 0 5px;
+    color: black;
+
+}
+.btn:hover {
+    box-shadow: 0 0 5px;
+    background: bisque;
+    background: -webkit-linear-gradient(top right, chocolate, bisque);
+    background: -moz-linear-gradient(top right, chocolate, bisque);
+    background: -ms-linear-gradient(top right, chocolate, bisque);
+    background: -o-linear-gradient(top right, chocolate, bisque);
+    background: linear-gradient(top right, chocolate, bisque);
+    color: black;
+}

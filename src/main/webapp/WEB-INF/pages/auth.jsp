@@ -10,6 +10,6 @@
     <input required placeholder="Your password" type="password" name="password"><br>
     <button type="submit">Sign in</button>
 </form>
-<button onclick="document.location='/index/reg'">Sign up</button>
+<a class="btn" href="${pageContext.request.contextPath}/index/reg">Sign up</a>
 </body>
 </html>

@@ -25,7 +25,7 @@
     <input required placeholder="num2" type="number" name="num2">
     <button type="submit">Calculate</button>
 </form>
-<button onclick="document.location='/index'">Home</button>
-<button onclick="document.location='/index/logout'">Logout</button>
+<a class="btn" href="${pageContext.request.contextPath}/index">Home</a>
+<a class="btn" href="${pageContext.request.contextPath}/index/logout">Logout</a>
 </body>
 </html>

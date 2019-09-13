@@ -11,6 +11,6 @@
     <input required placeholder="Your password" type="password" name="password"><br>
     <button type="submit">Sign up</button>
 </form>
-<button onclick="document.location='/index/auth'">Sign in</button>
+<a class="btn" href="${pageContext.request.contextPath}/index/auth">Sign in</a>
 </body>
 </html>

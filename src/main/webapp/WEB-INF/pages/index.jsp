@@ -20,16 +20,16 @@
 </c:if>
 
 <c:if test="${sessionScope.user == null}">
-    <button onclick="document.location='/index/reg'">Sign up</button>
+    <a class="btn" href="${pageContext.request.contextPath}/index/reg">Sign up</a>
 </c:if>
 <c:if test="${sessionScope.user == null}">
-    <button onclick="document.location='/index/auth'">Sign in</button>
+    <a class="btn" href="${pageContext.request.contextPath}/index/auth">Sign in</a>
 </c:if>
 <c:if test="${sessionScope.user != null}">
-    <button onclick="document.location='/index/logout'">Logout</button>
+    <a class="btn" href="${pageContext.request.contextPath}/index/logout">Logout</a>
 </c:if>
 <c:if test="${sessionScope.user != null}">
-    <button onclick="document.location='/index/calc'">Calculator</button>
+    <a class="btn" href="${pageContext.request.contextPath}/index/calc">Calculator</a>
 </c:if>
 </body>
 </html>

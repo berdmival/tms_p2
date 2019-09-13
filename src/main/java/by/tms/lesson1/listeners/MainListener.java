@@ -31,6 +31,11 @@ public class MainListener implements ServletContextListener,
     }
 
     @Override
+    public void sessionDestroyed(HttpSessionEvent se) {
+        ((Map<String, HttpSession>) se.getSession().getServletContext().getAttribute("sessions")).remove(se.getSession().getId());
+    }
+
+    @Override
     public void contextDestroyed(ServletContextEvent sce) {
 
     }
@@ -48,11 +53,6 @@ public class MainListener implements ServletContextListener,
     @Override
     public void sessionCreated(HttpSessionEvent se) {
 
-    }
-
-    @Override
-    public void sessionDestroyed(HttpSessionEvent se) {
-        ((Map<String, HttpSession>) se.getSession().getServletContext().getAttribute("sessions")).remove(se.getSession().getId());
     }
 
 }

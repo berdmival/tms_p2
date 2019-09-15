@@ -16,7 +16,7 @@
     <h2>History is empty</h2>
 </c:if>
 
-<h2><c:out value="${requestScope.message}" /></h2>
+<h2>Current result: <c:out value="${requestScope.message}" /></h2>
 <form action="${pageContext.request.contextPath}/index/calc" method="post">
     <input required autofocus placeholder="num1" type="number" name="num1">
     <select required name="action">

@@ -1,21 +1,20 @@
 package by.tms.lesson1.servlets;
 
+import by.tms.lesson1.entities.CalcExpressionInt;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @WebServlet(name = "calcServlet", urlPatterns = "/index/calc")
 public class CalcServlet extends HttpServlet {
 
-    public static final String CALC_JSP = "/WEB-INF/pages/calc.jsp";
-    public static final String CHECK_YOUR_INPUT_PLEASE_MESSAGE = "Check your input, please";
-    public static final String DATE_TIME_HISTORY_PATTERN = "yyyy-MM-dd HH:mm:ss";
+    private static final String CALC_JSP = "/WEB-INF/pages/calc.jsp";
+    private static final String CHECK_YOUR_INPUT_PLEASE_MESSAGE = "Check your input, please";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,47 +28,18 @@ public class CalcServlet extends HttpServlet {
         String action = req.getParameter("action");
 
         if (validateParameters(num1, num2, action)) {
-            Integer result = getResult(num1, num2, action);
+            CalcExpressionInt calcExpressionInt = new CalcExpressionInt(Integer.parseInt(num1), Integer.parseInt(num2), action);
+            String currentResult = calcExpressionInt.resultToString();
 
-            StringBuilder currentResult = new StringBuilder()
-                    .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern(DATE_TIME_HISTORY_PATTERN))).append(": ")
-                    .append("num1 = ").append(num1)
-                    .append(", num2 = ").append(num2)
-                    .append(", action: ").append(action)
-                    .append(", result = ").append(result);
+            ((List<String>) req.getSession().getAttribute("history")).add(currentResult);
 
-            ((List<String>) req.getSession().getAttribute("history")).add(currentResult.toString());
-
-            currentResult.insert(0, "Current result: ");
-            req.setAttribute("message", currentResult.toString());
+            req.setAttribute("message", currentResult);
 
             getServletContext().getRequestDispatcher(CALC_JSP).forward(req, resp);
         } else {
             req.setAttribute("message", CHECK_YOUR_INPUT_PLEASE_MESSAGE);
             getServletContext().getRequestDispatcher(CALC_JSP).forward(req, resp);
         }
-    }
-
-    private Integer getResult(String num1, String num2, String action) {
-        int result;
-        switch (action) {
-            case "sum":
-                result = Integer.parseInt(num1) + Integer.parseInt(num2);
-                break;
-            case "diff":
-                result = Integer.parseInt(num1) - Integer.parseInt(num2);
-                break;
-            case "mult":
-                result = Integer.parseInt(num1) * Integer.parseInt(num2);
-                break;
-            case "div":
-                result = Integer.parseInt(num1) / Integer.parseInt(num2);
-                break;
-            default:
-                return null;
-        }
-
-        return result;
     }
 
     private boolean validateParameters(String num1, String num2, String action) {

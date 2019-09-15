@@ -15,9 +15,9 @@ import java.util.List;
 @WebServlet(name = "authServlet", urlPatterns = "/index/auth")
 public class AuthServlet extends HttpServlet {
 
-    public static final String AUTH_JSP = "/WEB-INF/pages/auth.jsp";
-    public static final String INDEX_PATH = "/index";
-    public static final String NAME_OR_PASSWORD_IS_INCORRECT_MESSAGE = "Name or password is incorrect!";
+    private static final String AUTH_JSP = "/WEB-INF/pages/auth.jsp";
+    private static final String INDEX_PATH = "/index";
+    private static final String NAME_OR_PASSWORD_IS_INCORRECT_MESSAGE = "Name or password is incorrect!";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

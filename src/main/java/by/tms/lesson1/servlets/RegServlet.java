@@ -14,9 +14,9 @@ import java.util.ArrayList;
 @WebServlet(name = "regServlet", urlPatterns = "/index/reg")
 public class RegServlet extends HttpServlet {
 
-    public static final String REG_JSP = "/WEB-INF/pages/reg.jsp";
-    public static final String INDEX_AUTH_PATH = "/index/auth";
-    public static final String CHECK_YOUR_INPUT_PLEASE_MESSAGE = "Check your input, please";
+    private static final String REG_JSP = "/WEB-INF/pages/reg.jsp";
+    private static final String INDEX_AUTH_PATH = "/index/auth";
+    private static final String CHECK_YOUR_INPUT_PLEASE_MESSAGE = "Check your input, please";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

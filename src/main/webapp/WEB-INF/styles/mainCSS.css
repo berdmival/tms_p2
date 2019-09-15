@@ -94,3 +94,7 @@ form {
     background: linear-gradient(top right, chocolate, bisque);
     color: black;
 }
+
+.err_msg {
+    color: red;
+}

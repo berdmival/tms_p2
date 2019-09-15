@@ -20,14 +20,14 @@
 <p><c:out value="${requestScope.message}"/></p>
 
 <form action="${pageContext.request.contextPath}/index/calc" method="post">
-    <input required autofocus placeholder="num1" type="number" name="num1">
+    <input required autofocus placeholder="num1" type="number" name="num1" step="any">
     <select required name="action">
         <option value="sum">+</option>
         <option value="mult">*</option>
         <option value="diff">-</option>
         <option value="div">/</option>
     </select>
-    <input required placeholder="num2" type="number" name="num2">
+    <input required placeholder="num2" type="number" name="num2" step="any">
     <button type="submit">Calculate</button>
 </form>
 <a class="btn" href="${pageContext.request.contextPath}/index">Home</a>

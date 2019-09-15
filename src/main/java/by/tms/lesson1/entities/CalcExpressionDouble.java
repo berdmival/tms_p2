@@ -3,14 +3,14 @@ package by.tms.lesson1.entities;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class CalcExpressionInt implements CalcExpression {
+public class CalcExpressionDouble implements CalcExpression {
     private static final String DATE_TIME_HISTORY_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
-    private Integer num1;
-    private Integer num2;
+    private Double num1;
+    private Double num2;
     private String action;
 
-    public CalcExpressionInt(Integer num1, Integer num2, String action) {
+    public CalcExpressionDouble(Double num1, Double num2, String action) {
         this.num1 = num1;
         this.num2 = num2;
         this.action = action;
@@ -28,8 +28,8 @@ public class CalcExpressionInt implements CalcExpression {
     }
 
     @Override
-    public Integer calculate() {
-        Integer result;
+    public Double calculate() {
+        Double result;
         switch (this.action) {
             case "sum":
                 result = this.num1 + this.num2;

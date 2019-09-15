@@ -1,6 +1,7 @@
 package by.tms.lesson1.servlets;
 
-import by.tms.lesson1.entities.CalcExpressionInt;
+import by.tms.lesson1.entities.CalcExpression;
+import by.tms.lesson1.entities.CalcExpressionDouble;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,8 +29,8 @@ public class CalcServlet extends HttpServlet {
         String action = req.getParameter("action");
 
         if (validateParameters(num1, num2, action)) {
-            CalcExpressionInt calcExpressionInt = new CalcExpressionInt(Integer.parseInt(num1), Integer.parseInt(num2), action);
-            String currentResult = calcExpressionInt.resultToString();
+            CalcExpression calcExpression = new CalcExpressionDouble(Double.parseDouble(num1), Double.parseDouble(num2), action);
+            String currentResult = calcExpression.resultToString();
 
             ((List<String>) req.getSession().getAttribute("history")).add(currentResult);
 
@@ -43,7 +44,7 @@ public class CalcServlet extends HttpServlet {
     }
 
     private boolean validateParameters(String num1, String num2, String action) {
-        boolean validNumbers = (isIntByJonas(num1) & isIntByJonas(num2));
+        boolean validNumbers = (isNumeric(num1) & isNumeric(num2));
         boolean validAction = false;
         if (action != null) {
             switch (action) {
@@ -57,7 +58,7 @@ public class CalcServlet extends HttpServlet {
         return (validNumbers & validAction);
     }
 
-    private boolean isIntByJonas(String str) {
+    private boolean isNumeric(String str) {
         if (str == null) {
             return false;
         }
@@ -65,17 +66,20 @@ public class CalcServlet extends HttpServlet {
         if (length == 0) {
             return false;
         }
-        int i = 0;
-        if (str.charAt(0) == '-') {
-            if (length == 1) {
-                return false;
-            }
-            i = 1;
-        }
-        for (; i < length; i++) {
+        str = str.replaceAll(",", ".");
+        int dotCount = 0;
+        for (int i = 0; i < length; i++) {
             char c = str.charAt(i);
-            if (c <= '/' || c >= ':') {
-                return false;
+            if (c < '0' || c > '9') {
+                if (i == length - 1) {
+                    return false;
+                } else if (c == '.') {
+                    if (++dotCount > 1) {
+                        return false;
+                    }
+                } else if (i != 0 || c != '+' && c != '-') {
+                    return false;
+                }
             }
         }
         return true;

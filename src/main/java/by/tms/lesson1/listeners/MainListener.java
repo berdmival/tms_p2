@@ -23,7 +23,7 @@ public class MainListener implements ServletContextListener,
     @Override
     public void attributeAdded(HttpSessionBindingEvent sbe) {
         if (sbe.getName().equals("user")) {
-            sbe.getSession().setAttribute("history", new ArrayList<String>());
+            sbe.getSession().setAttribute("history", new ArrayList<>());
         }
     }
 

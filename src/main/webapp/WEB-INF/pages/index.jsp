@@ -11,10 +11,25 @@
         <h2>Session with id ${sessionItem.getId()}:</h2>
         ${sessionItem.getAttribute("user")}<br>
         <c:if test="${sessionItem.getAttribute(\"history\").size() > 0}">
-            <h2>History:</h2>
-            <c:forEach items="${sessionItem.getAttribute(\"history\")}" var="historyItem">
-                <p>${historyItem}</p>
-            </c:forEach>
+            <table border="1">
+                <caption><h2>History:</h2></caption>
+                <tr>
+                    <th>Date</th>
+                    <th>Number 1</th>
+                    <th>Number 2</th>
+                    <th>Action</th>
+                    <th>Result</th>
+                </tr>
+                <c:forEach items="${sessionItem.getAttribute(\"history\")}" var="historyItem">
+                    <tr>
+                        <td>${historyItem.getCalcDateTime()}</td>
+                        <td>${historyItem.getNum1()}</td>
+                        <td>${historyItem.getNum2()}</td>
+                        <td>${historyItem.getAction()}</td>
+                        <td>${historyItem.getResult()}</td>
+                    </tr>
+                </c:forEach>
+            </table>
         </c:if>
         <c:if test="${sessionItem.getAttribute(\"history\").size() == 0}">
             <h2>History is empty</h2>

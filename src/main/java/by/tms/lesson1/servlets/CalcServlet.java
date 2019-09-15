@@ -32,7 +32,7 @@ public class CalcServlet extends HttpServlet {
             CalcExpression calcExpression = new CalcExpressionDouble(Double.parseDouble(num1), Double.parseDouble(num2), action);
             String currentResult = calcExpression.resultToString();
 
-            ((List<String>) req.getSession().getAttribute("history")).add(currentResult);
+            ((List<CalcExpression>) req.getSession().getAttribute("history")).add(calcExpression);
 
             req.setAttribute("message", currentResult);
 

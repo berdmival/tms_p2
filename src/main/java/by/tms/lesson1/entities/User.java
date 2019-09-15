@@ -6,14 +6,14 @@ public class User {
     private int id;
     private String name;
     private int age;
-    private static int usersCount;
+    private static int idIncrementer;
     private String password;
 
     public User() {
     }
 
     public User(String name, int age, String password) {
-        this.id = usersCount++;
+        this.id = idIncrementer++;
         this.name = name;
         this.age = age;
         this.password = password;
@@ -25,7 +25,7 @@ public class User {
                 " id = " + id +
                 " (name is '" + name + "\'" +
                 ", age is " + age +
-                " years old)";
+                " years)";
     }
 
     @Override
@@ -68,9 +68,5 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public static int getUsersCount() {
-        return usersCount;
     }
 }

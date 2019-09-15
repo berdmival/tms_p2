@@ -30,11 +30,10 @@ public class CalcServlet extends HttpServlet {
 
         if (validateParameters(num1, num2, action)) {
             CalcExpression calcExpression = new CalcExpressionDouble(Double.parseDouble(num1), Double.parseDouble(num2), action);
-            String currentResult = calcExpression.resultToString();
 
             ((List<CalcExpression>) req.getSession().getAttribute("history")).add(calcExpression);
 
-            req.setAttribute("message", currentResult);
+            req.setAttribute("message", calcExpression.resultToString());
 
             getServletContext().getRequestDispatcher(CALC_JSP).forward(req, resp);
         } else {

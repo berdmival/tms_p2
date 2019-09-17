@@ -27,7 +27,7 @@ public class CalcExpressionDouble implements CalcExpression {
     @Override
     public String resultToString() {
         return new StringBuilder()
-                .append(this.calcDateTime.format(DateTimeFormatter.ofPattern(dateTimeHistoryPattern))).append(": ")
+                .append(this.calcDateTime.format(DateTimeFormatter.ofPattern(CalcExpressionDouble.dateTimeHistoryPattern))).append(": ")
                 .append("num1 = ").append(this.num1)
                 .append(", num2 = ").append(this.num2)
                 .append(", action: ").append(this.action)

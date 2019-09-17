@@ -33,7 +33,7 @@ public class CalcServlet extends HttpServlet {
 
             ((List<CalcExpression>) req.getSession().getAttribute("history")).add(calcExpression);
 
-            req.setAttribute("message", calcExpression.resultToString());
+            req.setAttribute("message", ((CalcExpressionDouble) calcExpression).getResult());
 
             getServletContext().getRequestDispatcher(CALC_JSP).forward(req, resp);
         } else {

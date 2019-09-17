@@ -14,20 +14,20 @@ public class CalcExpressionDouble implements CalcExpression {
     private Double num2;
     private String action;
     private Double result;
-    private String calcDateTime;
+    private LocalDateTime calcDateTime;
 
     public CalcExpressionDouble(Double num1, Double num2, String action) {
         this.num1 = num1;
         this.num2 = num2;
         this.action = action;
-        this.calcDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateTimeHistoryPattern));
+        this.calcDateTime = LocalDateTime.now();
         this.result = calculate();
     }
 
     @Override
     public String resultToString() {
         return new StringBuilder()
-                .append(this.calcDateTime).append(": ")
+                .append(this.calcDateTime.format(DateTimeFormatter.ofPattern(dateTimeHistoryPattern))).append(": ")
                 .append("num1 = ").append(this.num1)
                 .append(", num2 = ").append(this.num2)
                 .append(", action: ").append(this.action)
@@ -51,7 +51,7 @@ public class CalcExpressionDouble implements CalcExpression {
         return result;
     }
 
-    public String getCalcDateTime() {
+    public LocalDateTime getCalcDateTime() {
         return calcDateTime;
     }
 

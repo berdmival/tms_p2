@@ -1,6 +1,6 @@
 package by.tms.lesson1.servlets;
 
-import by.tms.lesson1.entities.users.User;
+import by.tms.lesson1.entities.user.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,7 +1,7 @@
 package by.tms.lesson1.servlets;
 
-import by.tms.lesson1.entities.expressions.CalcExpression;
-import by.tms.lesson1.entities.expressions.CalcExpressionDouble;
+import by.tms.lesson1.entities.expression.CalcExpression;
+import by.tms.lesson1.entities.expression.CalcExpressionDouble;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,4 +1,4 @@
-package by.tms.lesson1.entities.expressions;
+package by.tms.lesson1.entities.expression;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

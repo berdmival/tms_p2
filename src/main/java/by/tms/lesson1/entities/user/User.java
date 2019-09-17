@@ -1,4 +1,4 @@
-package by.tms.lesson1.entities.users;
+package by.tms.lesson1.entities.user;
 
 import java.util.Objects;
 

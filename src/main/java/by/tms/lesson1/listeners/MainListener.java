@@ -1,11 +1,15 @@
 package by.tms.lesson1.listeners;
 
+import by.tms.lesson1.entities.user.User;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpSessionAttributeListener;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionEvent;
+import javax.servlet.http.HttpSessionListener;
 import java.util.ArrayList;
-import java.util.List;
 
 @WebListener()
 public class MainListener implements ServletContextListener,
@@ -17,19 +21,16 @@ public class MainListener implements ServletContextListener,
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         sce.getServletContext().setAttribute("users", new ArrayList<>());
-        sce.getServletContext().setAttribute("sessions", new ArrayList<>());
     }
 
     @Override
     public void attributeAdded(HttpSessionBindingEvent sbe) {
-        if (sbe.getName().equals("user")) {
-            sbe.getSession().setAttribute("history", new ArrayList<>());
-        }
+
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-        ((List<HttpSession>) se.getSession().getServletContext().getAttribute("sessions")).remove(se.getSession());
+        ((User) se.getSession().getAttribute("user")).logout();
     }
 
     @Override

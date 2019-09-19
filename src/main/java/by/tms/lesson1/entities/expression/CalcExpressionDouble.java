@@ -1,5 +1,8 @@
 package by.tms.lesson1.entities.expression;
 
+import by.tms.lesson1.action.ActionTypeEnum;
+import by.tms.lesson1.util.Validator;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -12,27 +15,16 @@ public class CalcExpressionDouble implements CalcExpression {
 
     private Double num1;
     private Double num2;
-    private String action;
+    private ActionTypeEnum actionType;
     private Double result;
-    private LocalDateTime calcDateTime;
+    private String calcDateTime;
 
-    public CalcExpressionDouble(Double num1, Double num2, String action) {
+    public CalcExpressionDouble(Double num1, Double num2, ActionTypeEnum actionType) {
         this.num1 = num1;
         this.num2 = num2;
-        this.action = action;
-        this.calcDateTime = LocalDateTime.now();
+        this.actionType = actionType;
+        this.calcDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern(CalcExpressionDouble.dateTimeHistoryPattern));
         this.result = calculate();
-    }
-
-    @Override
-    public String resultToString() {
-        return new StringBuilder()
-                .append(this.calcDateTime.format(DateTimeFormatter.ofPattern(CalcExpressionDouble.dateTimeHistoryPattern))).append(": ")
-                .append("num1 = ").append(this.num1)
-                .append(", num2 = ").append(this.num2)
-                .append(", action: ").append(this.action)
-                .append(", result = ").append(this.result)
-                .toString();
     }
 
     public Double getNum1() {
@@ -43,38 +35,62 @@ public class CalcExpressionDouble implements CalcExpression {
         return num2;
     }
 
-    public String getAction() {
-        return action;
+    public ActionTypeEnum getAction() {
+        return actionType;
+    }
+
+    public String getCalcDateTime() {
+        return calcDateTime;
     }
 
     public Double getResult() {
         return result;
     }
 
-    public LocalDateTime getCalcDateTime() {
-        return calcDateTime;
-    }
-
     @Override
     public Double calculate() {
         Double result;
-        switch (this.action) {
-            case "sum":
-                result = this.num1 + this.num2;
+        switch (this.actionType) {
+            case SUM:
+                result = sum(this.num1, this.num2);
                 break;
-            case "diff":
-                result = this.num1 - this.num2;
+
+            case DIFF:
+                result = diff(this.num1, this.num2);
                 break;
-            case "mult":
-                result = this.num1 * this.num2;
+
+            case MULT:
+                result = mult(this.num1, this.num2);
                 break;
-            case "div":
-                result = this.num1 / this.num2;
+
+            case DIV:
+                if (Validator.isValidExpression(this.num1, this.num2, this.actionType)) {
+                    result = div(this.num1, this.num2);
+                } else {
+                    result = null;
+                }
                 break;
+
             default:
-                return null;
+                result = null;
         }
 
         return result;
+    }
+
+    private Double sum(Double num1, Double num2) {
+        return num1 + num2;
+    }
+
+    private Double diff(Double num1, Double num2) {
+        return num1 - num2;
+    }
+
+    private Double mult(Double num1, Double num2) {
+        return num1 * num2;
+    }
+
+    private Double div(Double num1, Double num2) {
+        return num1 / num2;
     }
 }

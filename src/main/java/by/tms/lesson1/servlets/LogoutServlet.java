@@ -1,13 +1,13 @@
 package by.tms.lesson1.servlets;
 
+import by.tms.lesson1.entities.user.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Map;
 
 @WebServlet(name = "logoutServlet", urlPatterns = "/index/logout")
 public class LogoutServlet extends HttpServlet {
@@ -16,6 +16,7 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ((User) request.getSession().getAttribute("user")).logout();
         request.getSession().invalidate();
         response.sendRedirect(INDEX_PATH);
     }

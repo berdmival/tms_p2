@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(name = "authServlet", urlPatterns = "/index/auth")
 public class AuthServlet extends HttpServlet {
@@ -39,10 +38,15 @@ public class AuthServlet extends HttpServlet {
             boolean authenticationSuccessful = false;
             for (User user : users) {
                 if (user.equals(currentUser)) {
-                    authenticationSuccessful = true;
-                    currentSession.setAttribute("user", user);
-                    ((List<HttpSession>) getServletContext().getAttribute("sessions")).add(currentSession);
-                    resp.sendRedirect(INDEX_PATH);
+                    if (!user.isLogin()) {
+                        authenticationSuccessful = true;
+                        user.login();
+                        currentSession.setAttribute("user", user);
+                        resp.sendRedirect(INDEX_PATH);
+                    } else {
+                        req.setAttribute("message", "User " + user.getName() + " is already login!");
+                        getServletContext().getRequestDispatcher(AUTH_JSP).forward(req, resp);
+                    }
                 }
             }
             if (!authenticationSuccessful) {

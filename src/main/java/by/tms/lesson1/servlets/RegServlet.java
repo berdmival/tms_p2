@@ -16,7 +16,7 @@ public class RegServlet extends HttpServlet {
 
     private static final String REG_JSP = "/WEB-INF/pages/reg.jsp";
     private static final String INDEX_AUTH_PATH = "/index/auth";
-    private static final String CHECK_YOUR_INPUT_PLEASE_MESSAGE = "Check your input, please";
+    private static final String CHECK_YOUR_INPUT_PLEASE_MESSAGE = "Check your input, please!";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,7 +38,7 @@ public class RegServlet extends HttpServlet {
             for (User user : users) {
                 if (user.getName().equals(currentUser.getName())) {
                     userExists = true;
-                    req.setAttribute("message", "User " + user.getName() + " is already exists");
+                    req.setAttribute("message", "User " + user.getName() + " is already exists!");
                     getServletContext().getRequestDispatcher(REG_JSP).forward(req, resp);
                 }
             }

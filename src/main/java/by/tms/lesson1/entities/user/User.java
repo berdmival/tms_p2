@@ -1,5 +1,9 @@
 package by.tms.lesson1.entities.user;
 
+import by.tms.lesson1.entities.expression.CalcExpression;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class User {
@@ -8,6 +12,8 @@ public class User {
     private int age;
     private static int idIncrementer;
     private String password;
+    private boolean isLogin;
+    private List<CalcExpression> history;
 
     public User() {
     }
@@ -17,6 +23,12 @@ public class User {
         this.name = name;
         this.age = age;
         this.password = password;
+        this.isLogin = false;
+        this.history = new ArrayList<>();
+    }
+
+    public List<CalcExpression> getHistory() {
+        return history;
     }
 
     @Override
@@ -68,5 +80,17 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    public void login() {
+        isLogin = true;
+    }
+
+    public void logout() {
+        isLogin = false;
     }
 }

@@ -5,7 +5,7 @@
 <body>
 <h1>Enter numbers and select action. Then click "Calculate".</h1>
 
-<c:if test="${sessionScope.history.size() > 0}">
+<c:if test="${sessionScope.user.getHistory().size() > 0}">
     <table border="1">
         <caption><h2>History:</h2></caption>
         <tr>
@@ -15,7 +15,7 @@
             <th>Action</th>
             <th>Result</th>
         </tr>
-        <c:forEach var="historyItem" items="${sessionScope.history}">
+        <c:forEach var="historyItem" items="${sessionScope.user.getHistory()}">
             <tr>
                 <td>${historyItem.getCalcDateTime()}</td>
                 <td>${historyItem.getNum1()}</td>
@@ -27,7 +27,7 @@
     </table>
     <hr size="2" color="black">
 </c:if>
-<c:if test="${sessionScope.history.size() == 0}">
+<c:if test="${sessionScope.user.getHistory().size() == 0}">
     <h2>History is empty</h2>
 </c:if>
 
